@@ -23,7 +23,7 @@ if(isset($_SESSION["user_id"])) {
     <title>Title</title>
 </head>
 <body>
-<h1>Home</h1>
+<h1>Acasa</h1>
 
 <?php if (isset($user)) : ?>
   <p>Salut <?= htmlspecialchars ($user["name"])?> </p>
