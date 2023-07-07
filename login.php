@@ -50,6 +50,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     <label for="password">password</label>
     <input type="password" id="password" name="password">
+    <p>Daca nu ai inca cont apasa <a href="signup.php">aici</a></p>
 
     <button>Log in</button>
 </form>
