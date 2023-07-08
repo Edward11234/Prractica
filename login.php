@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     $sql = sprintf("SELECT * FROM user
             WHERE email = '%s'",
-            $mysqli -> real_escape_string($_POST["email"]));
+            $mysqli->real_escape_string($_POST["email"]));
 
     $result = $mysqli ->query($sql);
 
@@ -37,6 +37,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     <title>Title</title>
 </head>
 <body>
+<!-- de aici in sus e top html -->
  <h1>Login</h1>
 
  <?php if($is_invalid):?>
@@ -54,4 +55,5 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     <button>Log in</button>
 </form>
+<!-- de aici in jos e bottom html -->
 </body>

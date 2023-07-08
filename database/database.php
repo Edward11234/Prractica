@@ -1,14 +1,34 @@
 <?php
-$host = "localhost";
-$dbname = "login_db";
-$username = "root";
-$password = "";
+//$host = "localhost";
+//$dbname = "edi";
+//$username = "root";
+//$password = "";
+//
+//$mysqli = new mysqli($host, $username, $password, $dbname);
+//
+//if ($mysqli->connect_errno) {
+//    die("Failed to connect to MySQL: " . $mysqli->connect_error);
+//}
+//
+//return $mysqli;
 
-$mysqli = new mysqli($host, $username, $password, $dbname);
 
-if ($mysqli->connect_errno) {
-    die("Failed to connect to MySQL: " . $mysqli->connect_error);
+
+$host = '127.0.0.1';
+$db   = 'edi';
+$user = 'root';
+$pass = '';
+
+$options = [
+    \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
+    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+    \PDO::ATTR_EMULATE_PREPARES   => false,
+];
+$dsn = "mysql:host=$host;dbname=$db";
+try {
+    $pdo = new \PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-return $mysqli;
-?>
+return $pdo;
