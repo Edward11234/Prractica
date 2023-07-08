@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$mysqli = require __DIR__ . "/database.php";
+$mysqli = require __DIR__ . "/database/database.php";
 
 function showSuccessMessage($message, $redirectUrl) {
     $_SESSION['success_message'] = $message;

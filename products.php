@@ -1,6 +1,6 @@
 <?php
 
-$mysqli = require __DIR__ . "/database.php";
+$mysqli = require __DIR__ . "/database/database.php";
 
 
 $stmt = $mysqli->query("SELECT * FROM products");
