@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-
 if (isset($_SESSION['success_message'])) {
     echo '<p class="success-message">' . $_SESSION['success_message'] . '</p>';
     unset($_SESSION['success_message']);
@@ -37,29 +35,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         redirectBack();
     } else {
         $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $role = $_POST["role"]; // Obțineți rolul din formular
 
-        $mysqli = require __DIR__ . "/database/database.php";
+        $pdo = require __DIR__ . "/database/database.php";
 
-        $sql = "INSERT INTO user (name, email, password_hash)
-                VALUES (?, ?, ?)";
+        $checkEmailStmt = $pdo->prepare("SELECT id FROM users WHERE email = :email");
+        $checkEmailStmt->bindValue(':email', $_POST["email"]);
+        $checkEmailStmt->execute();
+        $existingUser = $checkEmailStmt->fetch(PDO::FETCH_ASSOC);
 
-        $stmt = $mysqli->stmt_init();
-
-        if (!$stmt->prepare($sql)) {
-            die("SQL error: " . $mysqli->error);
-        }
-
-        $stmt->bind_param("sss", $_POST["name"], $_POST["email"], $password_hash);
-
-        if ($stmt->execute()) {
-            $_SESSION['success_message'] = 'Registered Successfully';
+        if ($existingUser) {
+            addError("Emailul este folosit!");
             redirectBack();
         } else {
-            if ($mysqli->errno === 1062) {
-                addError("Emailul este folosit!");
+            $sql = "INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, ?)";
+            $stmt = $pdo->prepare($sql);
+
+            if (!$stmt) {
+                die("SQL error: " . $pdo->errorInfo()[2]);
+            }
+
+            if ($stmt->execute([$_POST["name"], $_POST["email"], $password_hash, $role])) {
+                $_SESSION['success_message'] = 'Registered Successfully';
                 redirectBack();
             } else {
-                die($mysqli->errno . " " . $mysqli->error);
+                die($stmt->errorInfo()[2]);
             }
         }
     }
@@ -138,7 +138,15 @@ if (isset($_SESSION['signup_form_errors']) && count($_SESSION['signup_form_error
         <input type="password" id="password_confirmation" name="password_confirmation">
     </div>
 
-    <button type="submit">Sign up</button> <p>Acum te poti loga <a href="login.php">aici</a></p>
+    <div>
+        <label for="role">Role</label>
+        <select id="role" name="role">
+            <option value="customer">Customer</option>
+            <option value="seller">Seller</option>
+        </select>
+    </div>
+
+    <button type="submit">Sign up</button> <p>Acum te poți loga <a href="login.php">aici</a></p>
 </form>
 
 </body>

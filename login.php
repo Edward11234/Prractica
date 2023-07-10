@@ -2,31 +2,33 @@
 
 $is_invalid = false;
 
-if($_SERVER["REQUEST_METHOD"] === "POST"){
-    $mysqli = require __DIR__ . "/database/database.php";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $pdo = require __DIR__ . "/database/database.php";
 
-    $sql = sprintf("SELECT * FROM user
-            WHERE email = '%s'",
-            $mysqli->real_escape_string($_POST["email"]));
 
-    $result = $mysqli ->query($sql);
+    $checkEmailStmt = $pdo->prepare("SELECT id, password_hash FROM users WHERE email = :email");
+    $checkEmailStmt->bindValue(':email', $_POST["email"]);
+    $checkEmailStmt->execute();
+    $existingUser = $checkEmailStmt->fetch(PDO::FETCH_ASSOC);
 
-    $user = $result->fetch_assoc();
-
-    if($user) {
-        if(password_verify($_POST["password"],$user["password_hash"])) {
+    if ($existingUser) {
+        if (password_verify($_POST["password"], $existingUser["password_hash"])) {
+            // Autentificare reușită
             session_start();
             session_regenerate_id();
-            $_SESSION["user_id"] = $user["id"];
+            $_SESSION["user_id"] = $existingUser["id"];
             header("Location: index.php");
             exit;
-
+        } else {
+            // Parolă incorectă
+            $is_invalid = true;
         }
-
+    } else {
+        // Utilizatorul nu există
+        $is_invalid = true;
     }
-
-    $is_invalid = true;
 }
+
 
 ?>
 <!DOCTYPE html>

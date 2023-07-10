@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$mysqli = require __DIR__ . "/database/database.php";
+$pdo = require __DIR__ . "/database/database.php";
 
 function showSuccessMessage($message, $redirectUrl) {
     $_SESSION['success_message'] = $message;
@@ -20,19 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($name) || empty($description) || empty($price) || empty($category_id) || empty($stock)) {
         $error = 'Toate câmpurile sunt obligatorii.';
     } else {
-        $stmt = $mysqli->prepare("INSERT INTO products (name, description, price, category_id, image_id, stock) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssdiis", $name, $description, $price, $category_id, $image_id, $stock);
-        $stmt->execute();
-        $product_id = $stmt->insert_id;
-        $stmt->close();
+        $sql = "INSERT INTO products (name, description, price, category_id, image_id, stock) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$name, $description, $price, $category_id, $image_id, $stock]);
+        $product_id = $pdo->lastInsertId();
+        $stmt->closeCursor();
 
         showSuccessMessage('Produs adăugat cu succes', 'products.php');
     }
 }
 
-$stmt = $mysqli->query("SELECT id, name FROM categories");
-$categories = $stmt->fetch_all(MYSQLI_ASSOC);
-$stmt->close();
+$stmt = $pdo->query("SELECT id, name FROM categories");
+$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt->closeCursor();
 ?>
 
 <!DOCTYPE html>
