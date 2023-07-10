@@ -163,7 +163,7 @@ if (isset($_POST['remove_all'])) {
 
                             if ($product_data && is_array($product_data)) {
                                 $quantity = $product['quantity'];
-                                $price = (float)$product_data['price']; // Convert price to a float
+                                $price = (float)$product_data['price'];
                                 $product_total = $price * $quantity;
                                 $total += $product_total;
                                 ?>
