@@ -106,8 +106,9 @@ if (isset($_POST['remove_all'])) {
                                 <img src="<?php echo $product['image_url']; ?>" alt="phone" class="img-fluid mb-2">
                                 <h6>
                                     <?php echo $product['description']; ?>
+                                    <br>
                                     <?php if ($product['price'] !== null) { ?>
-                                        (<?php echo $product['price']; ?>)
+                                        <?php echo $product['price']; ?>
                                     <?php } ?>
                                 </h6>
                                 <input type="text" name="quantity" class="form-control" placeholder="Quantity" value="1">

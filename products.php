@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $pdo = require __DIR__ . "/database/database.php";
 
 if (!isset($_SESSION['cart'])) {

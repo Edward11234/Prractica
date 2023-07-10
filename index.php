@@ -1,6 +1,5 @@
 <?php
-
-
+session_start();
 if (isset($_SESSION["user_id"])) {
     $pdo = require __DIR__ . "/database/database.php";
 
