@@ -19,9 +19,13 @@ $categories = $categoriesStmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Home</title>
 
     <style>
-        .carousel-image {
+        .carousel-item {
             height: 600px;
-            object-fit: cover;
+        }
+        .carousel-image {
+            height: 100%;
+            width: 100%;
+            /*object-fit: cover;*/
         }
         .content-container {
             margin-left: 600px;
