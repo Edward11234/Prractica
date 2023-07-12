@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $pdo = require __DIR__ . "/database/database.php";
 
 
-    $checkEmailStmt = $pdo->prepare("SELECT id, password_hash FROM users WHERE email = :email");
+    $checkEmailStmt = $pdo->prepare("SELECT id, name, password_hash FROM users WHERE email = :email");
     $checkEmailStmt->bindValue(':email', $_POST["email"]);
     $checkEmailStmt->execute();
     $existingUser = $checkEmailStmt->fetch(PDO::FETCH_ASSOC);
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Autentificare reușită
             session_start();
             session_regenerate_id();
-            $_SESSION["user_id"] = $existingUser["id"];
+            $_SESSION["user"] = $existingUser;
             header("Location: index.php");
             exit;
         } else {

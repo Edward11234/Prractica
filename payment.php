@@ -36,7 +36,8 @@ if (isset($_POST['buy'])) {
 
     if (empty($errors)) {
         try {
-            $query = "INSERT INTO payments (name, email, card_number, expiration_date, cvv) VALUES (:name, :email, :card_number, :expiration_date, :cvv)";
+            // salvam in db order-ul
+            $query = "INSERT INTO orders (name, email, card_number, expiration_date, cvv) VALUES (:name, :email, :card_number, :expiration_date, :cvv)";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':email', $email);
@@ -45,7 +46,24 @@ if (isset($_POST['buy'])) {
             $stmt->bindParam(':cvv', $cvv);
             $stmt->execute();
 
+            // luam ultimul id inserat in db
+            $orderId = $pdo->lastInsertId();
 
+            // trecem prin fiecare produs din cos si il adaugam in order_products
+            foreach ($_SESSION['cart'] as $cartItem) {
+                $query = "INSERT INTO order_products (order_id,product_id,quantity,unit_price) VALUES (:orderId, :productId, :quantity, :unitPrice)";
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(':orderId', $orderId);
+                $stmt->bindParam(':productId', $cartItem['product_id']);
+                $stmt->bindParam(':quantity', $cartItem['quantity']);
+                $stmt->bindParam(':unitPrice', $cartItem['price']);
+                $stmt->execute();
+            }
+
+            // stergem cosul de cumparaturi din sesiune
+            unset($_SESSION['cart']);
+
+            // facem redirect
             header("Location: payment_success.php");
             exit;
         } catch (PDOException $e) {

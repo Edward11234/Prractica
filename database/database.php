@@ -1,7 +1,7 @@
 <?php
 
 $host = '127.0.0.1';
-$db   = 'edi';
+$db   = 'login_db';
 $user = 'root';
 $pass = '';
 

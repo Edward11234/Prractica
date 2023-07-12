@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +38,7 @@
             } ?>
 
             <li class="nav-item">
-                <a class="nav-link" href="logout.php">Log out</a>
+                <a class="nav-link" href="logout.php">Log out, <?php echo $_SESSION['user']['name']; ?></a>
             </li>
         </ul>
     </div>

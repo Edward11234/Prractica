@@ -3,7 +3,6 @@
 session_start();
 $pdo = require __DIR__ . "/database/database.php";
 
-
 $categoriesQuery = "SELECT * FROM categories";
 $categoriesStmt = $pdo->query($categoriesQuery);
 $categories = $categoriesStmt->fetchAll(PDO::FETCH_ASSOC);

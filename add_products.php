@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $pdo = require __DIR__ . "/database/database.php";
 
 function showSuccessMessage($message, $redirectUrl) {
@@ -20,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($name) || empty($description) || empty($price) || empty($category_id) || empty($stock)) {
         $error = 'Toate câmpurile sunt obligatorii.';
     } else {
-        $sql = "INSERT INTO products (name, description, price, category_id, image_id, stock) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO products (name, description, price, category_id, image_id, stock, user_id) VALUES (?, ?, ?, ?, ?, ?,?)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$name, $description, $price, $category_id, $image_id, $stock]);
+        $stmt->execute([$name, $description, $price, $category_id, $image_id, $stock, $_SESSION['user_id']]);
         $product_id = $pdo->lastInsertId();
         $stmt->closeCursor();
 
