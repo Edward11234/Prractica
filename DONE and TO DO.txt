@@ -1,0 +1,14 @@
+Reparat login.php
+"Stilizat paginile"(maine ma ocup sa arata si mai bine)
+Reparat shopping cart , acum totalul e corect
+Adaugat payment
+
+
+
+TO DO
+------
+De facut mai user friendly , sa nu ma mai repet atat
+De facut un css pentru tot proiectul , nu pentru fiecare separat
+Eliminat categories.php si implementat in index.php
+De facut in index.php , unde am categoria , link catre toate obiectele dintr o categorie , cu tot cu review
+------

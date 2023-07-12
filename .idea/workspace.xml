@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="c75b3ecc-0395-4e09-b89d-e90aff5a1fa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/categories/show.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/categories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/articole_sportive.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/electronice.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/masini.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/nutritie.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/categories/product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/add_to_cart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/login_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/login_db.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/products.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -43,11 +38,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Prractica\images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +60,8 @@
       <option name="presentableId" value="Default" />
       <updated>1688833812623</updated>
       <workItem from="1688833814231" duration="116000" />
-      <workItem from="1688978870575" duration="20751000" />
+      <workItem from="1688978870575" duration="21543000" />
+      <workItem from="1689168431578" duration="14221000" />
     </task>
     <servers />
   </component>

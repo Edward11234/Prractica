@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2023 at 09:55 PM
+-- Generation Time: Jul 12, 2023 at 09:09 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -45,6 +45,30 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+                            `id` int(11) NOT NULL,
+                            `name` varchar(255) NOT NULL,
+                            `email` varchar(255) NOT NULL,
+                            `card_number` varchar(155) NOT NULL,
+                            `expiration_date` varchar(155) NOT NULL,
+                            `cvv` varchar(155) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `name`, `email`, `card_number`, `expiration_date`, `cvv`) VALUES
+                                                                                            (1, 'hjgj', 'eduard.vintila123@gmail.com', '1234567891111111', '02/26', '690'),
+                                                                                            (2, 'hjgj', 'eduard.vintila123@gmail.com', '1234567891111111', '02/27', '243'),
+                                                                                            (3, 'hjgj', 'donedwardo123@gmail.com', '1234567891111111', '11/29', '257');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -69,7 +93,10 @@ INSERT INTO `products` (`id`, `name`, `category_id`, `description`, `price`, `im
                                                                                                                    (3, 'Gantera reglabila', 3, 'Sa faci bratu mare', 500, 0, 'images/gantera reglabila.jpg', '1'),
                                                                                                                    (4, 'Valori nutritie', 4, 'Sa faci bratu mare', 200, 0, 'images/nutritie.jpg', '1'),
                                                                                                                    (5, 'hjgj', 1, 'adsada', 22, 0, '', '1'),
-                                                                                                                   (6, '231312', 2, 'sdda', 111, 0, '', '11');
+                                                                                                                   (6, '231312', 2, 'sdda', 111, 0, '', '11'),
+                                                                                                                   (7, 'bmw m4', 2, 'Rupe tata', 50000, 0, 'images/bmw.jpg', '3'),
+                                                                                                                   (8, 'Range Rover', 2, 'Mafia Car', 45000, 0, 'images/evoque.jpg', '1'),
+                                                                                                                   (9, 'A 12', 1, 'Telefon bun', 200, 0, 'images/samsung.jpg', '15');
 
 -- --------------------------------------------------------
 
@@ -125,6 +152,12 @@ ALTER TABLE `categories`
     ADD KEY `idx_categories_id` (`id`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+    ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -149,10 +182,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `reviews`
