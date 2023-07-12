@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO("mysql:host=127.0.0.1;dbname=login_db", "root", "");
+$pdo = require '../database/database.php';
 
 // Verificați dacă a fost trimis un formular pentru lăsarea unei recenzii
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

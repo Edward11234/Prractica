@@ -21,8 +21,7 @@ if (isset($_POST['add'])) {
     $quantity = (int)$_POST['quantity'];
 
     try {
-        $pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "");
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo = require './database/database.php';
 
         $query = "SELECT `name`, `price` FROM `products` WHERE id = :product_id";
         $stmt = $pdo->prepare($query);
@@ -83,8 +82,7 @@ if (isset($_POST['remove_all'])) {
 <div class="row">
     <?php
     try {
-        $pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "");
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo = require __DIR__ . "/database/database.php";
 
         $query = "SELECT `id`, `name`, `image_url`, `description`, `price` FROM `products` ORDER BY id ASC";
         $stmt = $pdo->query($query);

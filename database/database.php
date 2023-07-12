@@ -1,21 +1,7 @@
 <?php
-//$host = "localhost";
-//$dbname = "edi";
-//$username = "root";
-//$password = "";
-//
-//$mysqli = new mysqli($host, $username, $password, $dbname);
-//
-//if ($mysqli->connect_errno) {
-//    die("Failed to connect to MySQL: " . $mysqli->connect_error);
-//}
-//
-//return $mysqli;
-
-
 
 $host = '127.0.0.1';
-$db   = 'login_db';
+$db   = 'edi';
 $user = 'root';
 $pass = '';
 
